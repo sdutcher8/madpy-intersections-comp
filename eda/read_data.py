@@ -15,7 +15,7 @@ def read_data(city='Chicago'):
     df["EntryHeading_deg"] = df.EntryHeading.apply(lambda x:degrees[x])
     df["ExitHeading_deg"] = df.ExitHeading.apply(lambda x:degrees[x])
     df["TurnDegree"] = (df.EntryHeading_deg-df.ExitHeading_deg).apply(lambda x: x if abs(x) <=180 else (x+360 if x<0 else x-360))
-    df["TurnDegre"] = df.TurnDegree.apply(lambda x: x if x != -180 else x*-1)
+    df["TurnDegree"] = df.TurnDegree.apply(lambda x: x if x != -180 else x*-1)
 
     # Lets assign a number(StreetId) to each street
     all_streets = np.concatenate([df.ExitStreetName.reindex().values, df.EntryStreetName.reindex().values])
